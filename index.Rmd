@@ -1,0 +1,88 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = FALSE,
+  comment = "#"
+)
+knitr::opts_knit$set(upload.fun = knitr::imgur_upload, base.url = NULL)  
+
+```
+
+#rentrez
+
+`rentrez` provides functions that work with the [NCBI Eutils](http://www.ncbi.nlm.nih.gov/books/NBK25500/)
+API to search, download data from, and otherwise interact with NCBI databases.
+
+```
+library(devtools)
+install_github("ropensci/rentrez")
+```
+
+#Uses the EUtils API
+
+* Read more [EUtils](http://www.ncbi.nlm.nih.gov/books/NBK25500/
+* Working with the EUtils API will often require making multiple calls using the entrez package.
+* Python has similar functionality in the Biopython module; http://biopython.org/wiki/Main_Page
+
+###A Simple Example:
+
+**Use a DOI to return the PMID of an article using `entrez_search`** 
+
+Use an article DOI: 
+[Cancer risk reduction and reproductive concerns in female BRCA1/2 mutation carriers](http://dx.doi.org/10.1007/s10689-007-9171-7). DOI of 10.1007/s10689-007-9171-7. 
+
+```{r}
+library(rentrez)
+#wcancer_paper <- entrez_search(db="pubmed", term="10.1007/s10689-007-9171-7[doi]")
+wcancer_paper <- entrez_search(db="pubmed", term="10.1002/ijc.21536[doi]")
+
+wcancer_paper$ids
+```
+
+**Link   data NCBI has for the article using `entrez_link`** 
+
+```{r}
+wcancer_data <- entrez_link(db="all", id=wcancer_paper$ids, dbfrom="pubmed")
+wcancer_data
+```
+```{r}
+wcancer_data$links
+```
+In R the wcancer_data object cantains a
+
+
+###Getting data from an article
+
+1. We've found an article on [Cancer risk reduction and reproductive concerns in female BRCA1/2 mutation carriers](http://dx.doi.org/10.1007/s10689-007-9171-7). With a DOI of 10.1007/s10689-007-9171-7. 
+2. We will find the PMID via the DOI using the entrez function `entrez_search`.
+
+```{r doi}
+library(rentrez)
+wcancer_risk  <- entrez_search(db = "pubmed", term = "10.1016/j.ympev.2010.07.013[doi]")
+wcancer_risk <- entrez_search(db="pubmed", term="10.1007/s10689-007-9171-7[doi]")
+wcancer_risk$ids
+```
+
+Now, what sorts of data are available from other NCBI database for this paper?
+
+```{r links}
+wcancer_data <- entrez_link(db="all", id=wcancer_risk$ids, dbfrom="pubmed")
+wcancer_data
+```
+In this case all the data is in the `links` element -- the databases linked off the PMID in NCBI:
+
+```{r showlinks}
+wcancer_data$links
+```
+
+```{r}
+wcancer_proteins <- entrez_fetch(db="protein", id=wcancer_data$links$pubmed_gene, rettype="fasta")
+cat(substr(wcancer_proteins, 1, 237))
+```
+
+
