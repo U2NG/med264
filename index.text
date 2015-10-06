@@ -3,6 +3,7 @@
 * Demo of [rentrez](https://cran.r-project.org/web/packages/rentrez/index.html)
   * Uses [EUtils API](http://www.ncbi.nlm.nih.gov/books/NBK25500/)
 * For hands on activity install R, RStudio, & rentrez [Install](installr.html)
+* Examples adapted from the GitHub rentrez tutorial < https://github.com/ropensci/rentrez>
 
 # Hands-on
 
