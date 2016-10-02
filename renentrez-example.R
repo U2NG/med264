@@ -5,7 +5,7 @@ library(devtools)
 install_github("ropensci/rentrez")
 
 #Uses the EUtils API
-#Read more [EUtils](http://www.ncbi.nlm.nih.gov/books/NBK25500/
+#Read more [EUtils](http://www.ncbi.nlm.nih.gov/books/NBK25500/)
 #Working with the EUtils API will often require making multiple calls using the entrez package.
 #Python has similar functionality in the Biopython module; http://biopython.org/wiki/Main_Page
 

@@ -44,7 +44,7 @@ wcancer_paper <- entrez_search(db="pubmed", term="10.1002/ijc.21536[doi]")
 wcancer_paper$ids
 ```
 
-**Link   data NCBI has for the article using `entrez_link`** 
+**Link data NCBI has for the article using `entrez_link`** 
 
 ```{r}
 wcancer_data <- entrez_link(db="all", id=wcancer_paper$ids, dbfrom="pubmed")
