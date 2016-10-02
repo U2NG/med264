@@ -29,7 +29,7 @@ wcancer_data
 wcancer_data$links
 
 wcancer_gene <- entrez_fetch(db="protein", id=wcancer_data$links$pubmed_gene, rettype="fasta")
-cat(substr(wcancer_proteins, 1, 237))
+cat(substr(wcancer_gene, 1, 237))
 
 
   
