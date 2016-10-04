@@ -1,0 +1,40 @@
+---
+title: "Exercises"
+author: "Tim Dennis"
+date: "October 2, 2016"
+output: 
+  html_document: 
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+library(rentrez)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Excercises 
+### 1: DOI Search
+
+Given the following DOI, use pubmed database to fill in the following information: 
+
+**DOI: 10.1111/nyas.13259**
+
+1. TITLE: 
+2. AUTHORS: 
+3. SOURCE
+4. PUBDATE: 
+
+###3:
+
+##Answers
+
+###1: DOI Search
+```{r answer1}
+ex1_paper <- entrez_search(db="pubmed", term="10.1111/nyas.13259[doi]")
+ex1_summary <- entrez_summary(db="pubmed", ex1_paper$ids)
+ex1_summary$title
+ex1_summary$authors
+ex1_summary$source
+ex1_summary$pubdate
+```
+
