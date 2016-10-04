@@ -1,29 +1,15 @@
 ---
-title: "r-intro"
+title: "MED264: r-intro"
 author: "Tim Dennis"
 date: "January 4, 2016"
 output: html_document
 ---
-##GPS R - Instructor Crib Sheet
-
 
 ####Before class:
 * set up RStudio
 * set up Socrative questions 
 	* Room: QTKGZXF6G
   	* start quiz, student paced, ask students to use UCSD email
-* put history in accessible place for students (DROPBOX)
-
-**Intro to Software Carpentry:**
-
-http://swcarpentry.github.io/slideshows/introducing-software-carpentry/index.html#slide-0 
-
-####Checklist for class:
-
-* etherpad: https://public.etherpad-mozilla.org/p/gps-intro-r
-* instructor's guide for R: http://swcarpentry.github.io/r-novice-gapminder/instructors.html
-* data download https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv
-* Day 1 command history - https://dl.dropboxusercontent.com/u/11326940/r-gps/r-gps-day1.R
 
 ####SETUP (5 min)
 
@@ -36,8 +22,6 @@ http://swcarpentry.github.io/slideshows/introducing-software-carpentry/index.htm
 	* active community, especially among scientists
 	* lots of code already written (and available for reuse!) for many different types of analyses
 * download data and put in SWC workshop folder: https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv
-	* don't worry if you see "python" in name, unzip and it should be called "data"
-	* can embed link in workshop webpage for students to download
 
 ####INTRO TO RSTUDIO (10 min)
 
@@ -134,8 +118,7 @@ all.equal(0.1+0.05, 0.15)
 
 **Vectorization**
 
-* Most of R’s functions are vectorized, meaning that the function will operate on all elements of a vector without needing to loop through and act on each element one at a time. 
-* This makes writing code more concise, easy to read, and less error prone.
+* R is vectorized, meaning that variables and functions can have vectors as values
 
 ```{r}
 1:5
@@ -145,19 +128,22 @@ x <- 1:5
 ```
 
 **Managing your enviorment** 
-* useful commands for working with R session 
+* usefule commands for working with R session 
 * `ls()` shows R ojects
 * `ls` plain will print out code for that function (or any R function)
 * Remove objects use `rm(x)`
-* **TIP**: If you have a lot of objects and want to delete all, use rm(list=ls()) - useful for startin afresh, often you will see this in the top of R scripts. 
+* If you have a lot of objects and want to delete all, use rm(list=ls())
 * In this case we are using ls() function inside another function that takes a list argument, so we are listing all objects and then deleting them with rm()
-* Arguments need the =, not <- `rm(list <- ls())` causes errors
+* arguments need the =, not <- `rm(list <- ls())` causes errors
 
 **R packages**
 
 * we can write our own packages or obtain package written by others.
 * Over 7,000 packages on CRAN (the comprehensive R archive network)
 * In RStudio console run: 
+```{r}
+
+```
 
 ```{r eval=FALSE}
 installed.packages() #list packages
@@ -167,12 +153,15 @@ remove.packages("packagename")
 library(packagename) #make package available 
 
 ```
+
+
 #### Project management with RStudio (10 min)
 
 * most ppl tend to organize projects like so
 * http://swcarpentry.github.io/r-novice-gapminder/fig/bad_layout.png
-* Create project in RStudio called med264-r 
-* Create a data/ folder inside
+* Create project in RStudio called gps-r 
+* Create a folder inside -- 
+	- need screen shot 
 
 #### Seeking help (5min)
 
@@ -201,7 +190,6 @@ Know R data types and the basic data structures commonly encountered. To be able
 
 Fuctions used to inspect objects in R to determine type: 
 
-```{r eval=FALSE}
 typeof() # what is its atomic type?
 is.logical() # is it TRUE/FALSE data?
 is.numeric() # is it numeric?
@@ -209,9 +197,8 @@ is.integer() # is it an integer?
 is.complex() # is it complex number data?
 is.character() # is it character data?
 str()  # what is it?
-```
 
-### 5 data structures: 
+5 data structures: 
 
 * vector
 * factor
@@ -222,7 +209,7 @@ str()  # what is it?
 **Vectors**
 
 * most common data structure, workhorse of R
-* AKA 'atomic vectors' because they can only contain **one** data type
+* AKA 'atomic vectors' because they can only contain on data type
 * building blocks of every other data structure
 * `x <- vector()` creates an empty vector, by default logical 0 length vector
 

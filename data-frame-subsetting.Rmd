@@ -1,7 +1,7 @@
 ---
-title: "Data frames & Subsetting"
+title: "MED264: Data frames & Subsetting"
 author: "Tim Dennis"
-date: "`r Sys.Date()`"
+date: "January 7, 2016"
 output: html_document
 ---
 

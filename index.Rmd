@@ -25,6 +25,14 @@ RStudio is an environment for developing using R.
 It can be downloaded [here](https://www.rstudio.com/products/rstudio/download/).
 You will need the Desktop version for your computer.
 
+### Data 
+
+* Gapminder data [download](gapminder-FiveYearData.csv)
+  * Make a folder for today's lecture 'med264-r'
+  * Make a `data/` folder inside of the folder you created.
+  * Download and put in `data/` folder inside your project folder. 
+  
+
 ### Lecture Notes 
 
 * [Intro to R](r-intro.html)
@@ -39,6 +47,17 @@ You will need the Desktop version for your computer.
 * Examples adapted from the GitHub rentrez tutorial &lt; https://github.com/ropensci/rentrez&gt;
 
 ## QUIZ & Homework
+
+### 10/4 
+
+* Quiz will be via Soctrative  <http://b.socrative.com/>
+  * Room #
+
+* Homework - R Coding
+  * 
+  
+### 10/6 
+
 Find an article to use for entrez_search() - you need the DOI
 Use entrez_link() to link to databases in ncbi
 Print out what databases are linked
