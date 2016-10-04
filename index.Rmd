@@ -44,4 +44,4 @@ Use entrez_link() to link to databases in ncbi
 Print out what databases are linked
 Use entrez_fetch() to retreive you db, try 'fasta' format or use ?entrez_fetch to see what other formats work.
 Print out the returned object cat() prints a concatenated object, substr will grab a slice of the character returned.
-</ol>
+

@@ -141,12 +141,9 @@ $(document).ready(function () {
 <div id="checklist-for-class" class="section level4">
 <h4>Checklist for class:</h4>
 <ul>
-<li>class website: <a href="http://ucsdlib.github.io/win2016-gps-intro-R/" class="uri">http://ucsdlib.github.io/win2016-gps-intro-R/</a></li>
 <li>etherpad: <a href="https://public.etherpad-mozilla.org/p/gps-intro-r" class="uri">https://public.etherpad-mozilla.org/p/gps-intro-r</a></li>
-<li>Tim’s Rhistory: <a href="https://www.dropbox.com/XXX" class="uri">https://www.dropbox.com/XXX</a></li>
 <li>instructor’s guide for R: <a href="http://swcarpentry.github.io/r-novice-gapminder/instructors.html" class="uri">http://swcarpentry.github.io/r-novice-gapminder/instructors.html</a></li>
 <li>data download <a href="https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv" class="uri">https://raw.githubusercontent.com/resbaz/r-novice-gapminder-files/master/data/gapminder-FiveYearData.csv</a></li>
-<li>Piazza: <a href="https://piazza.com/class/ij0cpi5tuaa4wv" class="uri">https://piazza.com/class/ij0cpi5tuaa4wv</a></li>
 <li>Day 1 command history - <a href="https://dl.dropboxusercontent.com/u/11326940/r-gps/r-gps-day1.R" class="uri">https://dl.dropboxusercontent.com/u/11326940/r-gps/r-gps-day1.R</a></li>
 </ul>
 </div>
@@ -269,7 +266,8 @@ $(document).ready(function () {
 </ul>
 <p><strong>Vectorization</strong></p>
 <ul>
-<li>R is vectorized, meaning that variables and functions can have vectors as values</li>
+<li>Most of R’s functions are vectorized, meaning that the function will operate on all elements of a vector without needing to loop through and act on each element one at a time.</li>
+<li>This makes writing code more concise, easy to read, and less error prone.</li>
 </ul>
 <pre class="r"><code>1:5</code></pre>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
@@ -278,7 +276,7 @@ $(document).ready(function () {
 <pre class="r"><code>x &lt;- 1:5
 2^x</code></pre>
 <pre><code>## [1]  2  4  8 16 32</code></pre>
-<p><strong>Managing your enviorment</strong> * usefule commands for working with R session * <code>ls()</code> shows R ojects * <code>ls</code> plain will print out code for that function (or any R function) * Remove objects use <code>rm(x)</code> * If you have a lot of objects and want to delete all, use rm(list=ls()) * In this case we are using ls() function inside another function that takes a list argument, so we are listing all objects and then deleting them with rm() * arguments need the =, not &lt;- <code>rm(list &lt;- ls())</code> causes errors</p>
+<p><strong>Managing your enviorment</strong> * useful commands for working with R session * <code>ls()</code> shows R ojects * <code>ls</code> plain will print out code for that function (or any R function) * Remove objects use <code>rm(x)</code> * <strong>TIP</strong>: If you have a lot of objects and want to delete all, use rm(list=ls()) - useful for startin afresh, often you will see this in the top of R scripts. * In this case we are using ls() function inside another function that takes a list argument, so we are listing all objects and then deleting them with rm() * Arguments need the =, not &lt;- <code>rm(list &lt;- ls())</code> causes errors</p>
 <p><strong>R packages</strong></p>
 <ul>
 <li>we can write our own packages or obtain package written by others.</li>
@@ -296,11 +294,8 @@ library(packagename) #make package available </code></pre>
 <ul>
 <li>most ppl tend to organize projects like so</li>
 <li><a href="http://swcarpentry.github.io/r-novice-gapminder/fig/bad_layout.png" class="uri">http://swcarpentry.github.io/r-novice-gapminder/fig/bad_layout.png</a></li>
-<li>Create project in RStudio called gps-r</li>
-<li>Create a folder inside –
-<ul>
-<li>need screen shot</li>
-</ul></li>
+<li>Create project in RStudio called med264-r</li>
+<li>Create a data/ folder inside</li>
 </ul>
 </div>
 <div id="seeking-help-5min" class="section level4">
@@ -320,7 +315,13 @@ library(packagename) #make package available </code></pre>
 <li><strong>text</strong> (called “character” in R) (e.g, “a”, “swc”, ‘This is a cat’)</li>
 </ul>
 <p>Fuctions used to inspect objects in R to determine type:</p>
-<p>typeof() # what is its atomic type? is.logical() # is it TRUE/FALSE data? is.numeric() # is it numeric? is.integer() # is it an integer? is.complex() # is it complex number data? is.character() # is it character data? str() # what is it?</p>
+<pre class="r"><code>typeof() # what is its atomic type?
+is.logical() # is it TRUE/FALSE data?
+is.numeric() # is it numeric?
+is.integer() # is it an integer?
+is.complex() # is it complex number data?
+is.character() # is it character data?
+str()  # what is it?</code></pre>
 <p>5 data structures:</p>
 <ul>
 <li>vector</li>
