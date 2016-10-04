@@ -134,7 +134,7 @@ c(1, 2, 'f')`</code></pre>
 <p>Start by making a vector with the numbers 1 through 26. Multiply the vector by 2, and give the resulting vector names A through Z (hint: there is a built in vector called LETTERS).</p>
 </div>
 <div id="section-2" class="section level2">
-<h2>3</h2>
+<h2>3.</h2>
 <blockquote>
 <p>There are several subtly different ways to call variables, observations and elements from data.frames:</p>
 <ul>
@@ -146,8 +146,31 @@ c(1, 2, 'f')`</code></pre>
 <li><code>cats[, 1]</code></li>
 <li><code>cats[1, ]</code></li>
 </ul>
+<p>Load the data into R:</p>
+<p><code>cats &lt;- read.csv('https://raw.githubusercontent.com/jt14den/med264/gh-pages/data/feline-data.csv')</code></p>
 <p>Try out these examples and explain what is returned by each one.</p>
 <p><em>Hint:</em> Use the function <code>typeof()</code> to examine what is returned in each case.</p>
+</blockquote>
+</div>
+<div id="section-3" class="section level2">
+<h2>4</h2>
+<blockquote>
+<p>Given the following code:</p>
+<pre><code>x &lt;- c(5.4, 6.2, 7.1, 4.8, 7.5)
+names(x) &lt;- c('a', 'b', 'c', 'd', 'e')
+print(x)</code></pre>
+<pre><code>  a   b   c   d   e 
+5.4 6.2 7.1 4.8 7.5 </code></pre>
+<ol style="list-style-type: decimal">
+<li>Write a subsetting command to return the values in x that are greater than 4 and less than 7.</li>
+</ol>
+</blockquote>
+</div>
+<div id="section-4" class="section level2">
+<h2>5</h2>
+<blockquote>
+<p>Write a function called <code>kelvin_to_celsius</code> that takes a temperature in Kelvin and returns that temperature in Celsius</p>
+<p>Hint: To convert from Kelvin to Celsius you minus 273.15</p>
 </blockquote>
 </div>
 

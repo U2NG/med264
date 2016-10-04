@@ -122,14 +122,132 @@ $(document).ready(function () {
 </div>
 
 
+<div id="section" class="section level2">
+<h2>1</h2>
 <blockquote>
-<h2 id="challenge-1">Challenge 1</h2>
 <p>Look at the help for the <code>c</code> function. What kind of vector do you expect you will create if you evaluate the following:</p>
 <pre><code>c(1, 2, 3)
 c('d', 'e', 'f')
 c(1, 2, 'f')`</code></pre>
 <p>{: .r} &gt; ## Solution to Challenge 1 &gt; &gt; The <code>c()</code> function creates a vector, in which all elements are the &gt; same type. In the first case, the elements are numeric, in the &gt; second, they are characters, and in the third they are characters: &gt; the numeric values “coerced” to be characters. {: .solution} {: .challenge}</p>
 </blockquote>
+</div>
+<div id="section-1" class="section level2">
+<h2>2</h2>
+<p>Start by making a vector with the numbers 1 through 26. Multiply the vector by 2, and give the resulting vector names A through Z (hint: there is a built in vector called LETTERS)</p>
+<p>Solution to Challenge 1</p>
+<p>x &lt;- 1:26 x &lt;- x * 2 names(x) &lt;- LETTERS</p>
+</div>
+<div id="section-2" class="section level2">
+<h2>3</h2>
+<blockquote>
+<p>There are several subtly different ways to call variables, observations and elements from data.frames:</p>
+<ul>
+<li><code>cats[1]</code></li>
+<li><code>cats[[1]]</code></li>
+<li><code>cats$coat</code></li>
+<li><code>cats</code>[“coat”]</li>
+<li><code>cats[1, 1]</code></li>
+<li><code>cats[, 1]</code></li>
+<li><code>cats[1, ]</code></li>
+</ul>
+<p>Try out these examples and explain what is returned by each one.</p>
+<p><em>Hint:</em> Use the function <code>typeof()</code> to examine what is returned in each case.</p>
+<blockquote>
+<h2 id="solution-to-challenge-3">Solution to Challenge 3</h2>
+<pre><code>cats[1]</code></pre>
+<p>{: .r}</p>
+<pre><code>    coat
+1 calico
+2  black
+3  tabby</code></pre>
+<p>{: .output} We can think of a data frame as a list of vectors. The single brace <code>[1]</code> returns the first slice of the list, as another list. In this case it is the first column of the data frame.</p>
+<pre><code>cats[[1]]</code></pre>
+<p>{: .r}</p>
+<pre><code>[1] calico black  tabby 
+Levels: black calico tabby</code></pre>
+<p>{: .output} The double brace <code>[[1]]</code> returns the contents of the list item. In this case it is the contents of the first column, a <em>vector</em> of type <em>factor</em>.</p>
+<pre><code>cats$coat</code></pre>
+<p>{: .r}</p>
+<pre><code>[1] calico black  tabby 
+Levels: black calico tabby</code></pre>
+<p>{: .output} This example uses the <code>$</code> character to address items by name. <em>coat</em> is the first column of the data frame, again a <em>vector</em> of type <em>factor</em>.</p>
+<pre><code>cats[&quot;coat&quot;]</code></pre>
+<p>{: .r}</p>
+<pre><code>    coat
+1 calico
+2  black
+3  tabby</code></pre>
+<p>{: .output} Here we are using a single brace <code>[&quot;coat&quot;]</code> replacing the index number with the column name. Like example 1, the returned object is a <em>list</em>.</p>
+<pre><code>cats[1, 1]</code></pre>
+<p>{: .r}</p>
+<pre><code>[1] calico
+Levels: black calico tabby</code></pre>
+<p>{: .output} This example uses a single brace, but this time we provide row and column coordinates. The returned object is the value in row 1, column 1. The object is an <em>integer</em> but because it is part of a <em>vector</em> of type <em>factor</em>, R displays the label “calico” associated with the integer value.</p>
+<pre><code>cats[, 1]</code></pre>
+<p>{: .r}</p>
+<pre><code>[1] calico black  tabby 
+Levels: black calico tabby</code></pre>
+<p>{: .output} Like the previous example we use single braces and provide row and column coordinates. The row coordinate is not specified, R interprets this missing value as all the elements in this <em>column</em> <em>vector</em>.</p>
+<pre><code>cats[1, ]</code></pre>
+<p>{: .r}</p>
+<pre><code>    coat weight likes_string
+1 calico    2.1         TRUE</code></pre>
+<p>{: .output} Again we use the single brace with row and column coordinates. The column coordinate is not specified. The return value is a <em>list</em> containing all the values in the first row. {: .solution} {: .challenge}</p>
+</blockquote>
+</blockquote>
+</div>
+<div id="section-3" class="section level2">
+<h2>4</h2>
+<blockquote>
+<p>Given the following code:</p>
+<pre><code>x &lt;- c(5.4, 6.2, 7.1, 4.8, 7.5)
+names(x) &lt;- c('a', 'b', 'c', 'd', 'e')
+print(x)</code></pre>
+<p>{: .r}</p>
+<pre><code>  a   b   c   d   e 
+5.4 6.2 7.1 4.8 7.5 </code></pre>
+<p>{: .output}</p>
+<ol style="list-style-type: decimal">
+<li>Write a subsetting command to return the values in x that are greater than 4 and less than 7.</li>
+</ol>
+<blockquote>
+<h2 id="solution-to-challenge-3-1">Solution to challenge 3</h2>
+<p>Given the following code:</p>
+<pre><code>x &lt;- c(5.4, 6.2, 7.1, 4.8, 7.5)
+names(x) &lt;- c('a', 'b', 'c', 'd', 'e')
+print(x)</code></pre>
+<p>{: .r}</p>
+<pre><code>  a   b   c   d   e 
+5.4 6.2 7.1 4.8 7.5 </code></pre>
+<p>{: .output}</p>
+<ol style="list-style-type: decimal">
+<li>Write a subsetting command to return the values in x that are greater than 4 and less than 7.</li>
+</ol>
+<pre><code>x_subset &lt;- x[x&lt;7 &amp; x&gt;4]
+print(x_subset)</code></pre>
+<p>{: .r}</p>
+<pre><code>  a   b   d 
+5.4 6.2 4.8 </code></pre>
+<p>{: .output} {: .solution} {: .challenge}</p>
+</blockquote>
+</blockquote>
+</div>
+<div id="section-4" class="section level2">
+<h2>5</h2>
+<blockquote>
+<p>Write a function called <code>kelvin_to_celsius</code> that takes a temperature in Kelvin and returns that temperature in Celsius</p>
+<p>Hint: To convert from Kelvin to Celsius you minus 273.15</p>
+<blockquote>
+<h2 id="solution-to-challenge-1">Solution to challenge 1</h2>
+<p>Write a function called <code>kelvin_to_celsius</code> that takes a temperature in Kelvin and returns that temperature in Celsius</p>
+<pre><code>kelvin_to_celsius &lt;- function(temp) {
+ celsius &lt;- temp - 273.15
+ return(celsius)
+}</code></pre>
+</blockquote>
+</blockquote>
+</div>
 
 
 

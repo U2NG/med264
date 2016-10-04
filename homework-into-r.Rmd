@@ -37,7 +37,40 @@ Start by making a vector with the numbers 1 through 26. Multiply the vector by 2
 > - `cats[, 1]`
 > - `cats[1, ]`
 >
-> Try out these examples and explain what is returned by each one.
+> Load the data into R: 
+>
+> `cats <- read.csv('https://raw.githubusercontent.com/jt14den/med264/gh-pages/data/feline-data.csv')`
+>
+>Try out these examples and explain what is returned by each one.
 >
 > *Hint:* Use the function `typeof()` to examine what is returned in each case.
+
+## 4
 >
+> Given the following code:
+>
+> 
+> ~~~
+> x <- c(5.4, 6.2, 7.1, 4.8, 7.5)
+> names(x) <- c('a', 'b', 'c', 'd', 'e')
+> print(x)
+> ~~~
+> 
+> 
+> 
+> ~~~
+>   a   b   c   d   e 
+> 5.4 6.2 7.1 4.8 7.5 
+> ~~~
+>
+>
+> 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
+>
+
+
+## 5
+>
+> Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
+> and returns that temperature in Celsius
+>
+> Hint: To convert from Kelvin to Celsius you minus 273.15
