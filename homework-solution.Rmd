@@ -1,0 +1,38 @@
+---
+title: "homework-solutions"
+author: "Tim Dennis"
+date: "10/4/2016"
+output: html_document
+---
+
+## 1
+>
+> Look at the help for the `c` function. What kind of vector do you
+> expect you will create if you evaluate the following:
+> 
+> ~~~
+> c(1, 2, 3)
+> c('d', 'e', 'f')
+> c(1, 2, 'f')`
+> ~~~
+> {: .r}
+> > ## Solution to Challenge 1
+> >
+> > The `c()` function creates a vector, in which all elements are the
+> > same type. In the first case, the elements are numeric, in the
+> > second, they are characters, and in the third they are characters:
+> > the numeric values "coerced" to be characters.
+> {: .solution}
+{: .challenge}
+
+## 2 
+
+Start by making a vector with the numbers 1 through 26. Multiply the vector by 2, and give the resulting vector names A through Z (hint: there is a built in vector called LETTERS)
+
+Solution to Challenge 1
+
+x <- 1:26
+x <- x * 2
+names(x) <- LETTERS
+
+

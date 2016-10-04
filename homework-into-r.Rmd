@@ -1,0 +1,43 @@
+---
+title: "Homework"
+author: "Tim Dennis"
+date: "10/4/2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 1. 
+
+Look at the help for the c function. What kind of vector do you expect you will create if you evaluate the following:
+
+```{r eval=FALSE}
+c(1, 2, 3)
+c('d', 'e', 'f')
+c(1, 2, 'f')`
+```
+
+## 2. 
+
+Start by making a vector with the numbers 1 through 26. Multiply the vector by 2, and give the resulting vector names A through Z (hint: there is a built in vector called LETTERS).
+
+## 3. 
+
+>
+> There are several subtly different ways to call variables, observations and
+> elements from data.frames:
+>
+> - `cats[1]`
+> - `cats[[1]]`
+> - `cats$coat`
+> - `cats`["coat"]
+> - `cats[1, 1]`
+> - `cats[, 1]`
+> - `cats[1, ]`
+>
+> Try out these examples and explain what is returned by each one.
+>
+> *Hint:* Use the function `typeof()` to examine what is returned in each case.
+>
