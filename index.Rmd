@@ -52,9 +52,7 @@ You will need the Desktop version for your computer.
 
 ### 10/4 
 
-
-
-* [Homework for Intro to R](homework-intro-r.html)
+* [Homework for Intro to R](homework-into-r.html)
   
 ### 10/6 
 
