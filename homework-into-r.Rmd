@@ -9,11 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Homework Instructions: 
+**Homework Instructions:** 
 
 1. Download the word version of this [document](homework-into-r.docx). You may also write a R script with the answers. 
 2. Add your answers to the document. 
-3. "Save as" your file as <yourname>-med264-rhomework.docx. 
+3. "Save as" your file as \<yourname\>-med264-rhomework.docx. 
 4. Bring to class on Thursday. 
 
 ## 1. Vector Types
