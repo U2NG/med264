@@ -101,7 +101,7 @@ We can also use `entrez_db_searchable` to see what search fields and qualifiers 
 entrez_db_searchable("sra")
 ```
 
-Check out <https://www.ncbi.nlm.nih.gov/entrez/query/static/help/Summary_Matrices.html#Search_Fields_and_Qualifiers> for more information on the search term qualifiers. 
+* Check out <https://www.ncbi.nlm.nih.gov/entrez/query/static/help/Summary_Matrices.html#Search_Fields_and_Qualifiers> for more information on the search term **qualifiers**. 
 
 ##A Simple Example: Find by DOI
 
@@ -129,21 +129,21 @@ wcan_summary$authors
 
 ## Search Terms:  `entrez_search()`
 
-* You'll often want to do with `rentrez` is search a given NCBI database to find records that match some keywords
-* We use the function `entrez_search()` to do this. 
+* More often what you'll want to do with `rentrez` is search a given NCBI database to find records that match some keywords
+* We use the function `entrez_search()` to do this
 * Simplest case you just need to provide a database name (`db`) and a search term (`term`) so let's search PubMed for articles about the `Natural Language Processing`:
 
 ```{r eg_search}
 r_search <- entrez_search(db="pubmed", term="Natural Language Processing")
 ```
-* The object returned by a search acts like a list, and you can get a summary of  its contents by printing it.
+
+* The object returned by a search acts like a `list`, and you can get a summary of  its contents by printing it.
 
 ```{r print_search}
 r_search
 ```
 
-* NCBI's server has worked out
-that we meant NPL, and so included the ['MeSH' term](http://www.ncbi.nlm.nih.gov/mesh) 
+* NCBI's server has worked out that we meant NPL, and so included the ['MeSH' term](http://www.ncbi.nlm.nih.gov/mesh) 
 * there are many more 'hits' for this search than there are unique IDs contained in this object. That's because the optional argument `retmax`, which controls the maximum number of returned values has a default
 value of 20.
 * The IDs are the most important thing returned here. They
@@ -158,14 +158,14 @@ r_search$ids
 * let's set the retmax up to retrieve more ids
 
 ```{r searchids_2}
-another_r_search <- entrez_search(db="pubmed", term="R Language", retmax=40)
+another_r_search <- entrez_search(db="pubmed", term="Natural Language Processing", retmax=40)
 another_r_search
 ```
 
 * If we want to get IDs for all of the thousands of records that match this
 search, we can use the NCBI's web history feature. 
 
-**Using search field operators** 
+## Using search field operators
 
 NCBI has search field operators that we can add to queries `query[field]`. 
 
@@ -205,40 +205,27 @@ entrez_db_searchable("sra")
 ```
 ##Precise queries using MeSH terms
 
-In addition to the search terms described above, the NCBI allows searches using
-[Medical Subject Heading (MeSH)](http://www.ncbi.nlm.nih.gov/mesh) terms. These
-terms create a 'controlled vocabulary',  and allow users to make very finely
-controlled queries of databases.
-
-For instance, if you were interested in reviewing studies on how a class of
-anti-malarial drugs called Folic Acid Antagonists work against _Plasmodium vivax_ (a
-particular species of malarial parasite), you could use this search:
+* NCBI allows searches using [Medical Subject Heading (MeSH)](http://www.ncbi.nlm.nih.gov/mesh) terms
+   * these terms create a 'controlled vocabulary',  and allow users to make very finely controlled queries of databases.
+* CASE: if you were interested in reviewing studies on how a class of anti-malarial drugs called Folic Acid Antagonists work against _Plasmodium vivax_ (a particular species of malarial parasite), you could use this search:
 
 ```{r, mesh}
 entrez_search(db   = "pubmed",
               term = "(vivax malaria[MeSH]) AND (folic acid antagonists[MeSH])")
 ```
 
-The complete set of MeSH terms is available as a database from the NCBI. That
-means it is possible to download detailed information about each term and find 
-the ways in which terms relate to each other using `rentrez`. You can search 
-for specific terms with `entrez_search(db="mesh", term =...)` and learn about the
-results of your search using the tools described below.
+* MeSH terms are available as a database from the NCBI
+* You can download detailed information about each term and findthe ways in which terms relate to each other using `rentrez`. 
+* Search specific terms with `entrez_search(db="mesh", term =...)` and learn about the results of your search using the tools described below.
 
-* [counting - use ted's example](2_entrez_search.html)
+* **[Counting - use Ted's example](2_entrez_search.html)**
 
 ## Linking docs: `entrez_link()`
 
-* strengths of the NCBI databases is the degree to which records of one
-type are connected to  other records within the NCBI or to external data
-sources
-*`entrez_link()` allows users to discover these links
-between records.
-* Let's find all NCBI data associated with a single gene (in this case the 
-Amyloid Beta Precursor gene, the product of which is associated with the 
-plaques that form in the brains of  Alzheimer's Disease patients).
-* we need to provide an ID (`id`), the database from which this
-ID comes (`dbfrom`) and the name of a database in which to find linked records (`db`)
+* One of the strengths of the NCBI databases is that records of one type are connected to  other records within the NCBI or to external data sources
+*`entrez_link()` allows users to discover these links between records.
+* Let's find all NCBI data associated with a single gene (in this case the  Amyloid Beta Precursor gene, the product of which is associated with the  plaques that form in the brains of  Alzheimer's Disease patients).
+* we need to provide an ID (`id`), the database from which this ID comes (`dbfrom`) and the name of a database in which to find linked records (`db`)
 * If we set this last argument to 'all' we can find links in multiple databases:
 
 ```{r elink0}
@@ -249,10 +236,8 @@ all_the_links
 ```{r elink_link}
 all_the_links$links
 ```
-* names of the list elements are in the format `[source_database]_[linked_database]` 
-and the elements themselves contain a vector of linked-IDs
-* if we want to
-find open access publications associated with this gene we could get linked records
+* names of the list elements are in the format `[source_database]_[linked_database]`  and the elements themselves contain a vector of linked-IDs
+* if we want to find open access publications associated with this gene we could get linked records
 in PubMed Central:
 
 ```{r, elink_pmc}

@@ -132,6 +132,7 @@ $(document).ready(function () {
 </ul></li>
 <li><a href="#a-simple-example-find-by-doi">A Simple Example: Find by DOI</a></li>
 <li><a href="#search-terms-entrez_search">Search Terms: <code>entrez_search()</code></a></li>
+<li><a href="#using-search-field-operators">Using search field operators</a></li>
 <li><a href="#precise-queries-using-mesh-terms">Precise queries using MeSH terms</a></li>
 <li><a href="#linking-docs-entrez_link">Linking docs: <code>entrez_link()</code></a></li>
 </ul>
@@ -251,7 +252,9 @@ install_github(&quot;ropensci/rentrez&quot;)</code></pre>
 #   ACS      Access is public or controlled 
 #   ALN      Percent of aligned reads 
 #   MBS      Size in megabases</code></pre>
-<p>Check out <a href="https://www.ncbi.nlm.nih.gov/entrez/query/static/help/Summary_Matrices.html#Search_Fields_and_Qualifiers" class="uri">https://www.ncbi.nlm.nih.gov/entrez/query/static/help/Summary_Matrices.html#Search_Fields_and_Qualifiers</a> for more information on the search term qualifiers.</p>
+<ul>
+<li>Check out <a href="https://www.ncbi.nlm.nih.gov/entrez/query/static/help/Summary_Matrices.html#Search_Fields_and_Qualifiers" class="uri">https://www.ncbi.nlm.nih.gov/entrez/query/static/help/Summary_Matrices.html#Search_Fields_and_Qualifiers</a> for more information on the search term <strong>qualifiers</strong>.</li>
+</ul>
 </div>
 </div>
 <div id="a-simple-example-find-by-doi" class="section level2">
@@ -296,13 +299,13 @@ wcan_summary$title</code></pre>
 <div id="search-terms-entrez_search" class="section level2">
 <h2>Search Terms: <code>entrez_search()</code></h2>
 <ul>
-<li>You’ll often want to do with <code>rentrez</code> is search a given NCBI database to find records that match some keywords</li>
-<li>We use the function <code>entrez_search()</code> to do this.</li>
+<li>More often what you’ll want to do with <code>rentrez</code> is search a given NCBI database to find records that match some keywords</li>
+<li>We use the function <code>entrez_search()</code> to do this</li>
 <li>Simplest case you just need to provide a database name (<code>db</code>) and a search term (<code>term</code>) so let’s search PubMed for articles about the <code>Natural Language Processing</code>:</li>
 </ul>
 <pre class="r"><code>r_search &lt;- entrez_search(db=&quot;pubmed&quot;, term=&quot;Natural Language Processing&quot;)</code></pre>
 <ul>
-<li>The object returned by a search acts like a list, and you can get a summary of its contents by printing it.</li>
+<li>The object returned by a search acts like a <code>list</code>, and you can get a summary of its contents by printing it.</li>
 </ul>
 <pre class="r"><code>r_search</code></pre>
 <pre><code># Entrez search result with 4308 hits (object contains 20 IDs and no web_history object)
@@ -321,14 +324,16 @@ wcan_summary$title</code></pre>
 <ul>
 <li>let’s set the retmax up to retrieve more ids</li>
 </ul>
-<pre class="r"><code>another_r_search &lt;- entrez_search(db=&quot;pubmed&quot;, term=&quot;R Language&quot;, retmax=40)
+<pre class="r"><code>another_r_search &lt;- entrez_search(db=&quot;pubmed&quot;, term=&quot;Natural Language Processing&quot;, retmax=40)
 another_r_search</code></pre>
-<pre><code># Entrez search result with 9417 hits (object contains 40 IDs and no web_history object)
-#  Search term (as translated):  R[All Fields] AND (&quot;programming languages&quot;[MeSH Te ...</code></pre>
+<pre><code># Entrez search result with 4308 hits (object contains 40 IDs and no web_history object)
+#  Search term (as translated):  &quot;natural language processing&quot;[MeSH Terms] OR (&quot;nat ...</code></pre>
 <ul>
 <li>If we want to get IDs for all of the thousands of records that match this search, we can use the NCBI’s web history feature.</li>
 </ul>
-<p><strong>Using search field operators</strong></p>
+</div>
+<div id="using-search-field-operators" class="section level2">
+<h2>Using search field operators</h2>
 <p>NCBI has search field operators that we can add to queries <code>query[field]</code>.</p>
 <ul>
 <li>For instance, we can find next generation sequence datasets for the (amazing…) ciliate <em>Tetrahymena thermophila</em> by using the organism (‘ORGN’) search field:</li>
@@ -378,21 +383,26 @@ another_r_search</code></pre>
 </div>
 <div id="precise-queries-using-mesh-terms" class="section level2">
 <h2>Precise queries using MeSH terms</h2>
-<p>In addition to the search terms described above, the NCBI allows searches using <a href="http://www.ncbi.nlm.nih.gov/mesh">Medical Subject Heading (MeSH)</a> terms. These terms create a ‘controlled vocabulary’, and allow users to make very finely controlled queries of databases.</p>
-<p>For instance, if you were interested in reviewing studies on how a class of anti-malarial drugs called Folic Acid Antagonists work against <em>Plasmodium vivax</em> (a particular species of malarial parasite), you could use this search:</p>
+<ul>
+<li>NCBI allows searches using <a href="http://www.ncbi.nlm.nih.gov/mesh">Medical Subject Heading (MeSH)</a> terms</li>
+<li>these terms create a ‘controlled vocabulary’, and allow users to make very finely controlled queries of databases.</li>
+<li>CASE: if you were interested in reviewing studies on how a class of anti-malarial drugs called Folic Acid Antagonists work against <em>Plasmodium vivax</em> (a particular species of malarial parasite), you could use this search:</li>
+</ul>
 <pre class="r"><code>entrez_search(db   = &quot;pubmed&quot;,
               term = &quot;(vivax malaria[MeSH]) AND (folic acid antagonists[MeSH])&quot;)</code></pre>
 <pre><code># Entrez search result with 12 hits (object contains 12 IDs and no web_history object)
 #  Search term (as translated):  &quot;malaria, vivax&quot;[MeSH Terms] AND &quot;folic acid antag ...</code></pre>
-<p>The complete set of MeSH terms is available as a database from the NCBI. That means it is possible to download detailed information about each term and find the ways in which terms relate to each other using <code>rentrez</code>. You can search for specific terms with <code>entrez_search(db=&quot;mesh&quot;, term =...)</code> and learn about the results of your search using the tools described below.</p>
 <ul>
-<li><a href="2_entrez_search.html">counting - use ted’s example</a></li>
+<li>MeSH terms are available as a database from the NCBI</li>
+<li>You can download detailed information about each term and findthe ways in which terms relate to each other using <code>rentrez</code>.</li>
+<li><p>Search specific terms with <code>entrez_search(db=&quot;mesh&quot;, term =...)</code> and learn about the results of your search using the tools described below.</p></li>
+<li><p><strong><a href="2_entrez_search.html">Counting - use Ted’s example</a></strong></p></li>
 </ul>
 </div>
 <div id="linking-docs-entrez_link" class="section level2">
 <h2>Linking docs: <code>entrez_link()</code></h2>
 <ul>
-<li>strengths of the NCBI databases is the degree to which records of one type are connected to other records within the NCBI or to external data sources *<code>entrez_link()</code> allows users to discover these links between records.</li>
+<li>One of the strengths of the NCBI databases is that records of one type are connected to other records within the NCBI or to external data sources *<code>entrez_link()</code> allows users to discover these links between records.</li>
 <li>Let’s find all NCBI data associated with a single gene (in this case the Amyloid Beta Precursor gene, the product of which is associated with the plaques that form in the brains of Alzheimer’s Disease patients).</li>
 <li>we need to provide an ID (<code>id</code>), the database from which this ID comes (<code>dbfrom</code>) and the name of a database in which to find linked records (<code>db</code>)</li>
 <li>If we set this last argument to ‘all’ we can find links in multiple databases:</li>
