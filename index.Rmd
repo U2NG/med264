@@ -55,6 +55,12 @@ You will need the Desktop version for your computer.
 * [Homework for Intro to R](homework-into-r.html)
   
 ### 10/6 
+## Take the QUIZ! 
+
+Go to: 
+
+1. <https://b.socrative.com/login/student/>
+2. USE the room number: QTKGZXF6G
 
 * Quiz will be via Soctrative  <http://b.socrative.com/>
   * Room #
