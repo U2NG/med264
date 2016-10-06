@@ -62,9 +62,6 @@ Go to:
 1. <https://b.socrative.com/login/student/>
 2. USE the room number: QTKGZXF6G
 
-* Quiz will be via Soctrative  <http://b.socrative.com/>
-  * Room #
-
 <!--
 Find an article to use for entrez_search() - you need the DOI
 Use entrez_link() to link to databases in ncbi
