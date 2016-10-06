@@ -125,10 +125,15 @@ $(document).ready(function () {
 <ul>
 <li><a href="#excercises">Excercises</a><ul>
 <li><a href="#doi-search">1: DOI Search</a></li>
-<li><a href="#section">3:</a></li>
+<li><a href="#keyword-search">2: Keyword search</a></li>
+<li><a href="#qualifiers">3: Qualifiers</a></li>
+<li><a href="#mesh-search">4: Mesh Search</a></li>
 </ul></li>
 <li><a href="#answers">Answers</a><ul>
 <li><a href="#doi-search-1">1: DOI Search</a></li>
+<li><a href="#keyword-search-1">2. Keyword search</a></li>
+<li><a href="#qualifiers-1">3: Qualifiers:</a></li>
+<li><a href="#mesh-search-1">4: Mesh search</a></li>
 </ul></li>
 </ul>
 </div>
@@ -146,8 +151,22 @@ $(document).ready(function () {
 <li>PUBDATE:</li>
 </ol>
 </div>
-<div id="section" class="section level3">
-<h3>3:</h3>
+<div id="keyword-search" class="section level3">
+<h3>2: Keyword search</h3>
+<p>Search entrez for a topic covered by this class.</p>
+</div>
+<div id="qualifiers" class="section level3">
+<h3>3: Qualifiers</h3>
+<p>Pick a data base in entrez and find the available qualifiers <code>entrez_db_searchable(&quot;sra&quot;)</code>. You can look up the search fields and qualifiers here: <a href="https://www.ncbi.nlm.nih.gov/entrez/query/static/help/Summary_Matrices.html#Search_Fields_and_Qualifiers" class="uri">https://www.ncbi.nlm.nih.gov/entrez/query/static/help/Summary_Matrices.html#Search_Fields_and_Qualifiers</a>. Using the qualifiers perform a search on a topic of your choice. Explore the object that R returns.</p>
+</div>
+<div id="mesh-search" class="section level3">
+<h3>4: Mesh Search</h3>
+<p>Now, perform a Mesh search. The example we used in class was:</p>
+<pre class="r"><code>entrez_search(db   = &quot;pubmed&quot;,
+              term = &quot;(vivax malaria[MeSH]) AND (folic acid antagonists[MeSH])&quot;)</code></pre>
+<pre><code>## Entrez search result with 12 hits (object contains 12 IDs and no web_history object)
+##  Search term (as translated):  &quot;malaria, vivax&quot;[MeSH Terms] AND &quot;folic acid antag ...</code></pre>
+<p>Try different Mesh terms in pubmed. You can look up Mesh terms here <a href="http://www.ncbi.nlm.nih.gov/mesh" class="uri">http://www.ncbi.nlm.nih.gov/mesh</a> or query the <code>Mesh</code> databse with the term: <code>entrez_search(db=&quot;mesh&quot;, term =...)</code>.</p>
 </div>
 </div>
 <div id="answers" class="section level2">
@@ -172,6 +191,26 @@ ex1_summary$title</code></pre>
 <pre><code>## [1] &quot;Ann N Y Acad Sci&quot;</code></pre>
 <pre class="r"><code>ex1_summary$pubdate</code></pre>
 <pre><code>## [1] &quot;2016 Sep 28&quot;</code></pre>
+</div>
+<div id="keyword-search-1" class="section level3">
+<h3>2. Keyword search</h3>
+<pre class="r"><code>another_r_search &lt;- entrez_search(db=&quot;pubmed&quot;, term=&quot;Natural Language Processing&quot;, retmax=40)
+another_r_search</code></pre>
+</div>
+<div id="qualifiers-1" class="section level3">
+<h3>3: Qualifiers:</h3>
+<pre class="r"><code>entrez_search(db=&quot;sra&quot;,
+              term=&quot;(Tetrahymena thermophila[ORGN] OR Tetrahymena borealis[ORGN]) AND 2013:2015[PDAT]&quot;,
+              retmax=0)</code></pre>
+<pre><code>## Entrez search result with 75 hits (object contains 0 IDs and no web_history object)
+##  Search term (as translated):  (&quot;Tetrahymena thermophila&quot;[Organism] OR &quot;Tetrahyme ...</code></pre>
+</div>
+<div id="mesh-search-1" class="section level3">
+<h3>4: Mesh search</h3>
+<pre class="r"><code>entrez_search(db   = &quot;pubmed&quot;,
+              term = &quot;(vivax malaria[MeSH]) AND (folic acid antagonists[MeSH])&quot;)</code></pre>
+<pre><code>## Entrez search result with 12 hits (object contains 12 IDs and no web_history object)
+##  Search term (as translated):  &quot;malaria, vivax&quot;[MeSH Terms] AND &quot;folic acid antag ...</code></pre>
 </div>
 </div>
 
