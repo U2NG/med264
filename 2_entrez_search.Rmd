@@ -8,6 +8,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+* Taken from Ted Hart's workshop on ROpenscience at SIO14 
+
 Searching metadata
 ========================================================
 

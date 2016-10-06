@@ -23,6 +23,12 @@ count_recs <- function(db, denom) {
     round(as.integer(nrecs)/denom, 1)
 }
 ```
+## Take the QUIZ! 
+
+Go to: 
+
+1. <https://b.socrative.com/login/student/>
+2. USE the room number: QTKGZXF6G
 
 ## NCBI
 
