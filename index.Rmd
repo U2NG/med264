@@ -41,20 +41,18 @@ You will need the Desktop version for your computer.
 
 ## Rentrez & Data Vis - 10/6
 
-* TBA
-<!--
-* Demo of <https://cran.r-project.org/web/packages/rentrez/index.html>
-* Uses <a href="http://www.ncbi.nlm.nih.gov/books/NBK25500/">EUtils API</a>
-* For hands on activity install R, RStudio, &amp; rentrez <a href="installr.html">Install</a>
-* Examples adapted from the GitHub rentrez tutorial &lt; https://github.com/ropensci/rentrez&gt;
--->
+* [Lecture notes- Entrez](1_rentrez_episode.html)
+* [Lecture notes - Counting *onmics](2_entrez_search.html)
+* Rentrez Uses [EUtils API](http://www.ncbi.nlm.nih.gov/books/NBK25500/)
+* Examples adapted from the GitHub rentrez tutorial <https://github.com/ropensci/rentrez>
+* Check out the other packages provided by [ROpenscience](http://ropensci.org/)
+
 ## QUIZ & Homework
 
-### 10/4 
 
 * [Homework for Intro to R](homework-into-r.html)
+* [Homework answers](homework-solution.html)
   
-### 10/6 
 ## Take the QUIZ! 
 
 Go to: 
@@ -62,10 +60,6 @@ Go to:
 1. <https://b.socrative.com/login/student/>
 2. USE the room number: QTKGZXF6G
 
-<!--
-Find an article to use for entrez_search() - you need the DOI
-Use entrez_link() to link to databases in ncbi
-Print out what databases are linked
-Use entrez_fetch() to retreive you db, try 'fasta' format or use ?entrez_fetch to see what other formats work.
-Print out the returned object cat() prints a concatenated object, substr will grab a slice of the character returned.
--->
+### Quiz Answers
+
+[Quiz Answers](Question_10_06_2016__11_56_QZ_med264introtor.pdf)

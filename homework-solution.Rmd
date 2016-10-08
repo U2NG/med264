@@ -15,49 +15,42 @@ output: html_document
 > c('d', 'e', 'f')
 > c(1, 2, 'f')`
 > ~~~
-> {: .r}
-> > ## Solution to Challenge 1
 > >
 > > The `c()` function creates a vector, in which all elements are the
 > > same type. In the first case, the elements are numeric, in the
 > > second, they are characters, and in the third they are characters:
 > > the numeric values "coerced" to be characters.
-> {: .solution}
-{: .challenge}
 
 ## 2 
 
-Start by making a vector with the numbers 1 through 26. Multiply the vector by 2, and give the resulting vector names A through Z (hint: there is a built in vector called LETTERS)
-
-Solution to Challenge 1
-
-x <- 1:26
-x <- x * 2
-names(x) <- LETTERS
+>Start by making a vector with the numbers 1 through 26. Multiply the vector by 2, and give the resulting vector names >A through Z (hint: there is a built in vector called LETTERS)
+>
+>>x <- 1:26  
+>>x <- x * 2  
+>>names(x) <- LETTERS  
 
 ## 3 
 >
 > There are several subtly different ways to call variables, observations and
 > elements from data.frames:
 >
-> - `cats[1]`
-> - `cats[[1]]`
-> - `cats$coat`
-> - `cats`["coat"]
-> - `cats[1, 1]`
-> - `cats[, 1]`
-> - `cats[1, ]`
+> - `cats[1]`  
+> - `cats[[1]]`  
+> - `cats$coat`  
+> - `cats`["coat"]  
+> - `cats[1, 1]`  
+> - `cats[, 1]`  
+> - `cats[1, ]`  
 >
 > Try out these examples and explain what is returned by each one.
 >
+> `cats <- read.csv('https://raw.githubusercontent.com/jt14den/med264/gh-pages/data/feline-data.csv')`  
+>
 > *Hint:* Use the function `typeof()` to examine what is returned in each case.
 >
-> > ## Solution to Challenge 3
-> > 
 > > ~~~
 > > cats[1]
 > > ~~~
-> > {: .r}
 > > 
 > > 
 > > 
@@ -67,7 +60,7 @@ names(x) <- LETTERS
 > > 2  black
 > > 3  tabby
 > > ~~~
-> > {: .output}
+> >
 > > We can think of a data frame as a list of vectors. The single brace `[1]`
 > returns the first slice of the list, as another list. In this case it is the
 > first column of the data frame.
@@ -75,7 +68,6 @@ names(x) <- LETTERS
 > > ~~~
 > > cats[[1]]
 > > ~~~
-> > {: .r}
 > > 
 > > 
 > > 
@@ -83,14 +75,12 @@ names(x) <- LETTERS
 > > [1] calico black  tabby 
 > > Levels: black calico tabby
 > > ~~~
-> > {: .output}
 > > The double brace `[[1]]` returns the contents of the list item. In this case
 > it is the contents of the first column, a _vector_ of type _factor_.
 > > 
 > > ~~~
 > > cats$coat
 > > ~~~
-> > {: .r}
 > > 
 > > 
 > > 
@@ -98,14 +88,12 @@ names(x) <- LETTERS
 > > [1] calico black  tabby 
 > > Levels: black calico tabby
 > > ~~~
-> > {: .output}
 > > This example uses the `$` character to address items by name. _coat_ is the
 > first column of the data frame, again a _vector_ of type _factor_.
 > > 
 > > ~~~
 > > cats["coat"]
 > > ~~~
-> > {: .r}
 > > 
 > > 
 > > 
@@ -115,14 +103,12 @@ names(x) <- LETTERS
 > > 2  black
 > > 3  tabby
 > > ~~~
-> > {: .output}
 > > Here we are using a single brace `["coat"]` replacing the index number with
 > the column name. Like example 1, the returned object is a _list_.
 > > 
 > > ~~~
 > > cats[1, 1]
 > > ~~~
-> > {: .r}
 > > 
 > > 
 > > 
@@ -130,7 +116,6 @@ names(x) <- LETTERS
 > > [1] calico
 > > Levels: black calico tabby
 > > ~~~
-> > {: .output}
 > > This example uses a single brace, but this time we provide row and column
 > coordinates. The returned object is the value in row 1, column 1. The object
 > is an _integer_ but because it is part of a _vector_ of type _factor_, R
@@ -139,7 +124,6 @@ names(x) <- LETTERS
 > > ~~~
 > > cats[, 1]
 > > ~~~
-> > {: .r}
 > > 
 > > 
 > > 
@@ -147,7 +131,6 @@ names(x) <- LETTERS
 > > [1] calico black  tabby 
 > > Levels: black calico tabby
 > > ~~~
-> > {: .output}
 > > Like the previous example we use single braces and provide row and column
 > coordinates. The row coordinate is not specified, R interprets this missing
 > value as all the elements in this _column_ _vector_.
@@ -155,7 +138,6 @@ names(x) <- LETTERS
 > > ~~~
 > > cats[1, ]
 > > ~~~
-> > {: .r}
 > > 
 > > 
 > > 
@@ -163,12 +145,9 @@ names(x) <- LETTERS
 > >     coat weight likes_string
 > > 1 calico    2.1         TRUE
 > > ~~~
-> > {: .output}
 > > Again we use the single brace with row and column coordinates. The column
 > coordinate is not specified. The return value is a _list_ containing all the
 > values in the first row.
-> {: .solution}
-{: .challenge}
 
 ## 4
 >
@@ -180,7 +159,6 @@ names(x) <- LETTERS
 > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > print(x)
 > ~~~
-> {: .r}
 > 
 > 
 > 
@@ -188,11 +166,9 @@ names(x) <- LETTERS
 >   a   b   c   d   e 
 > 5.4 6.2 7.1 4.8 7.5 
 > ~~~
-> {: .output}
 >
 > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 >
-> > ## Solution to challenge 3
 > > Given the following code:
 > >
 > > 
@@ -201,7 +177,6 @@ names(x) <- LETTERS
 > > names(x) <- c('a', 'b', 'c', 'd', 'e')
 > > print(x)
 > > ~~~
-> > {: .r}
 > > 
 > > 
 > > 
@@ -209,7 +184,6 @@ names(x) <- LETTERS
 > >   a   b   c   d   e 
 > > 5.4 6.2 7.1 4.8 7.5 
 > > ~~~
-> > {: .output}
 > >
 > > 1. Write a subsetting command to return the values in x that are greater than 4 and less than 7.
 > >
@@ -218,7 +192,6 @@ names(x) <- LETTERS
 > > x_subset <- x[x<7 & x>4]
 > > print(x_subset)
 > > ~~~
-> > {: .r}
 > > 
 > > 
 > > 
@@ -226,18 +199,14 @@ names(x) <- LETTERS
 > >   a   b   d 
 > > 5.4 6.2 4.8 
 > > ~~~
-> > {: .output}
-> {: .solution}
-{: .challenge}
 
 ## 5
 >
 > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > and returns that temperature in Celsius
 >
-> Hint: To convert from Kelvin to Celsius you minus 273.15
+> Hint: To convert from Kelvin to Celsius you minus 273.15  
 >
-> > ## Solution to challenge 1
 > >
 > > Write a function called `kelvin_to_celsius` that takes a temperature in Kelvin
 > > and returns that temperature in Celsius
